@@ -1,0 +1,326 @@
+/* Colors */
+/* RESET CSS & GENERAL SETTINGS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-size: calc(1vw + 0.7em);
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  background: #e9dccd;
+  overflow-x: hidden;
+}
+
+/* Home icon */
+.home {
+  font-size: 2.5rem;
+  margin: 5rem auto;
+  text-align: center;
+}
+
+.fa-warehouse {
+  color: #df8e24;
+}
+
+.intents {
+  margin: 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.intent {
+  margin: 0.5rem;
+  font-size: 0.8rem;
+  width: 12rem;
+  min-height: 6rem;
+  background: white;
+  color: #555353;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  padding: 2.5rem 0;
+  border: 1px dashed #df8e24;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.new-intent {
+  margin: 0.5rem;
+  font-size: 0.8rem;
+  width: 12rem;
+  min-height: 6rem;
+  background: white;
+  color: #555353;
+  border-radius: 5px;
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 1px solid #df8e24;
+}
+
+.new-intent__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.new-intent__title, .new-intent__timer {
+  font-weight: 600;
+}
+
+.new-intent__update, .new-intent__timer {
+  font-size: 0.6rem;
+}
+
+.new-intent__update {
+  opacity: 0.8;
+}
+
+.new-intent__data {
+  display: none;
+}
+
+.new-intent__title,
+.fa-trash,
+.fa-pen {
+  cursor: pointer;
+}
+
+.new-intent__title:hover,
+.fa-trash:hover,
+.fa-pen:hover {
+  color: #df8e24;
+}
+
+.fa-trash,
+.fa-pen {
+  margin-left: 0.5rem;
+}
+
+.new-intent--deletion-message {
+  background-color: #f8efef;
+  border-color: #f8efef;
+}
+
+.modal {
+  visibility: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: visibility 0s linear 0.25s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s, -webkit-transform 0.25s;
+}
+
+.modal__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 5px;
+}
+
+.modal__close-button {
+  width: 1.5rem;
+  line-height: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  right: 10;
+}
+
+.modal__close-button:hover {
+  opacity: 0.5;
+}
+
+.modal__body label {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.modal__form-input {
+  margin: 10px 0 20px 0;
+}
+
+.modal__form-input input,
+.modal__form-input textarea {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.modal__form-input--high {
+  height: 9rem;
+}
+
+.modal__footer {
+  visibility: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+}
+
+.modal__footer > button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  width: 3.6rem;
+  text-transform: uppercase;
+  color: white;
+}
+
+.modal__cancel-button {
+  background: #ff3434;
+}
+
+.modal__create-button {
+  background: #3ece3e;
+}
+
+.modal--show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s, -webkit-transform 0.25s;
+  z-index: 1000;
+}
+
+.modalFooter--show {
+  visibility: visible;
+}
+
+.modal--data-label {
+  opacity: 0.5;
+}
+
+.modal--inactive-btn {
+  cursor: none;
+  opacity: 0.3;
+}
+
+/* Toaster for authentification */
+.toast {
+  visibility: hidden;
+  position: fixed;
+  right: 2rem;
+  top: 8rem;
+  z-index: 2000;
+  min-width: 10rem;
+  padding: 0.9rem;
+  background-color: #df8e24;
+  color: white;
+  font-size: 0.7rem;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.toast--show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+          animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 8rem;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 8rem;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    top: 8rem;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: 8rem;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=index.css.map */

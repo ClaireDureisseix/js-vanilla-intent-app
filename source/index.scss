@@ -1,0 +1,266 @@
+/* Colors */
+$main-color: #e9dccd;
+$secondary-color: #df8e24;
+$modal-bg-color: rgba(0, 0, 0, 0.5);
+$border-color: #c1c1c1;
+$content-color: #555353;
+$confirm-color: #3ece3e;
+$cancel-color: #ff3434;
+$warning-color: #f8efef;
+$border-radius: 5px;
+$toast-top: 8rem;
+$modal-z-index: 1000;
+$toast-z-index: 2000;
+
+@mixin intent {
+  margin: 0.5rem;
+  font-size: 0.8rem;
+  width: 12rem;
+  min-height: 6rem;
+  background: white;
+  color: $content-color;
+  border-radius: $border-radius;
+}
+
+/* RESET CSS & GENERAL SETTINGS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-size: calc(1vw + 0.7em);
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  background: $main-color;
+  overflow-x: hidden;
+}
+
+/* Home icon */
+.home {
+  font-size: 2.5rem;
+  margin: 5rem auto;
+  text-align: center;
+}
+
+.fa-warehouse {
+  color: $secondary-color;
+}
+
+// Intents
+.intents {
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.intent {
+  @include intent;
+  text-align: center;
+  font-weight: bold;
+  padding: 2.5rem 0;
+  border: 1px dashed $secondary-color;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.new-intent {
+  @include intent;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid $secondary-color;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title,
+  &__timer {
+    font-weight: 600;
+  }
+  &__update,
+  &__timer {
+    font-size: 0.6rem;
+  }
+  &__update {
+    opacity: 0.8;
+  }
+  &__data {
+    display: none;
+  }
+}
+
+.new-intent__title,
+.fa-trash,
+.fa-pen {
+  cursor: pointer;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+.fa-trash,
+.fa-pen {
+  margin-left: 0.5rem;
+}
+
+.new-intent--deletion-message {
+  background-color: $warning-color;
+  border-color: $warning-color;
+}
+
+// Modal
+.modal {
+  visibility: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $modal-bg-color;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: $border-radius;
+  }
+  &__close-button {
+    width: 1.5rem;
+    line-height: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 10;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  &__body label {
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  &__form-input {
+    margin: 10px 0 20px 0;
+  }
+  &__form-input input,
+  &__form-input textarea {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: 10px;
+  }
+  &__form-input--high {
+    height: 9rem;
+  }
+  &__footer {
+    visibility: hidden;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+  &__footer > button {
+    border: none;
+    border-radius: $border-radius;
+    padding: 10px 15px;
+    width: 3.6rem;
+    text-transform: uppercase;
+    color: white;
+  }
+  &__cancel-button {
+    background: $cancel-color;
+  }
+  &__create-button {
+    background: $confirm-color;
+  }
+}
+
+.modal--show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: visibility 0s linear 0s, opacity 0.25s 0s,
+    -webkit-transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s,
+    -webkit-transform 0.25s;
+  z-index: $modal-z-index;
+}
+.modalFooter--show {
+  visibility: visible;
+}
+.modal--data-label {
+  opacity: 0.5;
+}
+.modal--inactive-btn {
+  cursor: none;
+  opacity: 0.3;
+}
+
+/* Toaster for authentification */
+.toast {
+  visibility: hidden;
+  position: fixed;
+  right: 2rem;
+  top: $toast-top;
+  z-index: $toast-z-index;
+  min-width: 10rem;
+  padding: 0.9rem;
+  background-color: $secondary-color;
+  color: white;
+  font-size: 0.7rem;
+  text-align: center;
+  border-radius: $border-radius;
+}
+
+.toast--show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: $toast-top;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    top: $toast-top;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}

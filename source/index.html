@@ -1,0 +1,63 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://kit.fontawesome.com/93f0a7d061.js"></script>
+  <link rel="stylesheet" href="index.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,400i,500i,700|Turret+Road:400,800&display=swap"
+    rel="stylesheet" />
+  <title>intent</title>
+</head>
+
+<body>
+  <section class="home">
+    <i class="fas fa-warehouse"></i>
+  </section>
+
+  <section id="intents" class="intents">
+    <!-- The new intents will come here -->
+    <div id="addIntent" class="intent" role="button">
+      <p>New intent</p>
+    </div>
+  </section>
+
+  <!-- Invisible by default. Shows only on click events -->
+  <div id="modal" class="modal">
+    <div class="modal__content">
+
+      <span id="closeBtnModal" class="modal__close-button" role="button">&times;</span>
+
+      <form id="modalBody" class="modal__body">
+        <label for="title">title</label>
+        <div id="intentTitleWrapper" class="modal__form-input">
+          <!-- The title input and data will come here -->
+        </div>
+
+        <label for="expressions">expressions</label>
+        <div id="intentExpressionsWrapper" class="modal__form-input modal__form-input--high">
+          <!-- The expressions input and data will come here -->
+        </div>
+
+        <label for="answer">answer</label>
+        <div id="intentAnswerWrapper" class="modal__form-input">
+          <!-- The answer input and data will come here -->
+        </div>
+      </form>
+
+      <div id="modalFooter" class="modal__footer" role="links">
+        <button id="cancelBtn" class="modal__cancel-button " role="button">Cancel</button>
+        <button id="createBtn" class="modal__create-button" role="button"></button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Invisible by default. Shows only on click events -->
+  <div id="toast" class="toast" role="message"></div>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
